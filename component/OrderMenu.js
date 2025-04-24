@@ -8,7 +8,10 @@ export default async function menu(menu) {
   data.forEach((item, index) => {
     console.log(`${index + 1}. ${item.category}`);
   });
-  const answer = await input({ message: `Pilih Menu dari 1-${data.length} :` });
+  console.log(`4. Lihat Keranjang`);
+  const answer = await input({
+    message: `Pilih Menu dari 1-${data.length + 1} :`,
+  });
   const num = parseInt(answer) - 1;
   if (num >= 0 && num < data.length) {
     const choice = data[num];
@@ -24,7 +27,5 @@ export default async function menu(menu) {
     });
     const urchoose = parseInt(ask) - 1;
     addOrder(urchoose, choice.item);
-  } else {
-    console.log("Pilihan tidak valid.");
   }
 }

@@ -1,4 +1,5 @@
 import { input } from "@inquirer/prompts";
+import Cart from "./Cart.js";
 
 export default async function addOrder(index, item) {
   let cart = [];
@@ -7,17 +8,14 @@ export default async function addOrder(index, item) {
     console.log(
       `Kamu Memesan 1x ${item[index].nama} dengan harga ${item[index].harga}`
     );
-    setTimeout(
-      () =>
-        console.log(
-          `${item[index].nama} dengan harga ${item[index].harga} Berhasil Ditambahkan ke Keranjang`
-        ),
-      2000
+
+    console.log(
+      `${item[index].nama} dengan harga ${item[index].harga} Berhasil Ditambahkan ke Keranjang`
     );
-    cart.push(item[index].nama, item[index].harga);
+    cart.push({ nama: item[index].nama, harga: item[index].harga });
     const urcart = await input({ message: "Lihat Keranjang? (Y/N)" });
     if (urcart === "Y" || urcart === "y") {
-      console.log(`Isi Keranjang-Mu ${cart[0]} Rp.${cart[1]}`);
+      Cart(cart);
     }
   }
 }
