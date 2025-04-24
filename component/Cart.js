@@ -4,6 +4,7 @@ import { menubar } from "../index.js";
 const Cart = async (items) => {
   if (items.length === 0) {
     console.log(`Keranjang Kosong `);
+    setTimeout(() => menu(menubar), 1000);
   } else {
     items.forEach((item, index) =>
       console.log(`${index + 1}. ${item.nama} - Rp.${item.harga}`)
