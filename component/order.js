@@ -1,19 +1,20 @@
 import { input } from "@inquirer/prompts";
 import Cart from "./Cart.js";
+import keranjang from "./Cartdata.js";
 
 export default async function addOrder(index, item) {
   const answer = await input({ message: `Apakah Kamu Yakin? (Y/N):` });
-  if (answer === "Y" || answer === "y") {
+  if (answer.toLowerCase() === "y") {
+    const selected = item[index];
     console.log(
-      `Kamu Memesan 1x ${item[index].nama} dengan harga ${item[index].harga}`
+      `Kamu Memesan 1x ${selected.nama} dengan harga ${selected.harga}`
     );
+    keranjang.push(selected);
+    console.log(`${selected.nama} berhasil ditambahkan ke keranjang`);
 
-    console.log(
-      `${item[index].nama} dengan harga ${item[index].harga} Berhasil Ditambahkan ke Keranjang`
-    );
     const urcart = await input({ message: "Lihat Keranjang? (Y/N)" });
-    if (urcart === "Y" || urcart === "y") {
-      Cart([{ nama: item[index].nama, harga: item[index].harga }]);
+    if (urcart.toLowerCase() === "y") {
+      Cart(keranjang);
     }
   }
 }

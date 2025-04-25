@@ -2,6 +2,7 @@ import { input } from "@inquirer/prompts";
 import numeral from "numeral";
 import addOrder from "./order.js";
 import Cart from "./Cart.js";
+import keranjang from "./Cartdata.js";
 
 export default async function menu(menu) {
   console.log("---- Welcome To HoseaCoffe-----");
@@ -30,7 +31,7 @@ export default async function menu(menu) {
     const urchoose = parseInt(ask) - 1;
     addOrder(urchoose, choice.item);
   } else if (4 === num + 1) {
-    Cart([]);
+    Cart(keranjang);
   } else {
     console.log(`Pilihan Tidak Valid`);
   }
