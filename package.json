@@ -11,6 +11,12 @@
   "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^7.4.1",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
     "numeral": "^2.0.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0"
   }
 }
