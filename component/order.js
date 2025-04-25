@@ -1,6 +1,8 @@
 import { input } from "@inquirer/prompts";
 import Cart from "./Cart.js";
 import keranjang from "./Cartdata.js";
+import menu from "./OrderMenu.js";
+import { menubar } from "../index.js";
 
 export default async function addOrder(index, item) {
   const answer = await input({ message: `Apakah Kamu Yakin? (Y/N):` });
@@ -16,5 +18,7 @@ export default async function addOrder(index, item) {
     if (urcart.toLowerCase() === "y") {
       Cart(keranjang);
     }
+  } else {
+    setTimeout(() => menu(menubar), 1000);
   }
 }

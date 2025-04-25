@@ -3,7 +3,7 @@ import menu from "./OrderMenu.js";
 import { menubar } from "../index.js";
 
 const Cart = async (items) => {
-  if (!items || items.length === 0) {
+  if (items.length === 0) {
     console.log(`Keranjang Kosong`);
     setTimeout(() => menu(menubar), 1000);
   } else {
@@ -13,8 +13,9 @@ const Cart = async (items) => {
     const returning = await input({ message: "Belanja Lagi? (Y/N)" });
     if (returning.toLowerCase() === "y") {
       menu(menubar);
-    } else {
-      console.log(`Program Selesai`);
+    }
+    if (returning.toLocaleLowerCase() === "n") {
+      console.log(`TerimaKasih Sudah Memesan Di HoseaCafe`);
     }
   }
 };
